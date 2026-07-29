@@ -1,0 +1,15 @@
+import fitz  # PyMuPDF
+
+def extract_text_from_pdf(uploaded_file):
+    """
+    Extract text from uploaded PDF file.
+    """
+
+    pdf = fitz.open(stream=uploaded_file.read(), filetype="pdf")
+
+    text = ""
+
+    for page in pdf:
+        text += page.get_text()
+
+    return text
